@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'langganan_promo_page.dart'; // Import the Langganan page
 
 class PromoPage extends StatelessWidget {
   @override
@@ -27,6 +28,14 @@ class PromoPage extends StatelessWidget {
             ),
           ),
         ),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.notifications),
+            onPressed: () {
+              // Handle notifications button press
+            },
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         child: Padding(

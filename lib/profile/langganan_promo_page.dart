@@ -16,7 +16,7 @@ class LangganankuPage extends StatelessWidget {
           leading: IconButton(
             icon: Icon(Icons.arrow_back, color: Colors.black),
             onPressed: () {
-              // Handle back button press
+              Navigator.of(context).pop();
             },
           ),
           bottom: TabBar(
@@ -86,70 +86,78 @@ class VoucherCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
-            height: 150,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.vertical(top: Radius.circular(10)),
-              image: DecorationImage(
-                image: NetworkImage('https://via.placeholder.com/300x150'),
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
+          _buildImage(),
           Padding(
             padding: const EdgeInsets.all(16.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'DISKON 20%',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                SizedBox(height: 8),
-                Row(
-                  children: [
-                    Icon(Icons.calendar_today, size: 16, color: Colors.grey),
-                    SizedBox(width: 8),
-                    Text(
-                      'Berlaku hingga 26 Nov 2023',
-                      style: TextStyle(color: Colors.grey),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 8),
-                Text(
-                  'Sisa: 2 voucher',
-                  style: TextStyle(color: Colors.grey),
-                ),
-                SizedBox(height: 8),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    TextButton(
-                      onPressed: () {
-                        // Handle "Pakai" button press
-                      },
-                      child: Text(
-                        'Pakai',
-                        style: TextStyle(color: Colors.blue),
-                      ),
-                      style: TextButton.styleFrom(
-                        side: BorderSide(color: Colors.blue),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(5),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
+            child: _buildCardContent(context),
           ),
         ],
       ),
+    );
+  }
+
+  Widget _buildImage() {
+    return Container(
+      height: 150,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(10)),
+        image: DecorationImage(
+          image: NetworkImage('https://via.placeholder.com/300x150'),
+          fit: BoxFit.cover,
+        ),
+      ),
+    );
+  }
+
+  Widget _buildCardContent(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'DISKON 20%',
+          style: TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        SizedBox(height: 8),
+        Row(
+          children: [
+            Icon(Icons.calendar_today, size: 16, color: Colors.grey),
+            SizedBox(width: 8),
+            Text(
+              'Berlaku hingga 26 Nov 2023',
+              style: TextStyle(color: Colors.grey),
+            ),
+          ],
+        ),
+        SizedBox(height: 8),
+        Text(
+          'Sisa: 2 voucher',
+          style: TextStyle(color: Colors.grey),
+        ),
+        SizedBox(height: 8),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            TextButton(
+              onPressed: () {
+                // Handle "Pakai" button press
+              },
+              child: Text(
+                'Pakai',
+                style: TextStyle(color: Colors.blue),
+              ),
+              style: TextButton.styleFrom(
+                side: BorderSide(color: Colors.blue),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(5),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ],
     );
   }
 }
